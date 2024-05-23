@@ -8,6 +8,9 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\signController;
 use App\Http\Controllers\Client\profile;
 use App\Http\Controllers\Client\uploadPost;
+use App\Http\Controllers\Admin\ClientController;
+
+
 
 
 
@@ -43,6 +46,7 @@ require __DIR__.'/auth.php';
 // Route::
 Route::middleware(['auth', 'role:admin'])->group(function (){
     Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
+    Route::get('/admin/ClientData', [ClientController::class, 'index'])->name('ClientData');
 
     // Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
                 // ->name('logouts');
