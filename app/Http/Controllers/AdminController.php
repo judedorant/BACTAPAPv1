@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+
 
 class AdminController extends Controller
 {
@@ -11,8 +14,11 @@ class AdminController extends Controller
         return "test";
     }
     public function AdminDashboard(){
-        // return view('admin.adminDashboard');
-        return view('admin.pages.index');
 
+        $id = Auth::user()->id;
+        $profileData = User::find($id);
+
+        // return view('admin.adminDashboard');
+        return view('admin.pages.home', compact('profileData'));
     }
 }
